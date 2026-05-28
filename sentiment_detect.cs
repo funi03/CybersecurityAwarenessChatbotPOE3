@@ -55,6 +55,7 @@ namespace Cybersecurity_Awareness_Chatbot_Part2
             if (feeling == "worried")
             {
                 return "It is understandable to feel worried. Cyber threats are common, but I can help you stay safe online.";
+
             }
 
             // FRUSTRATED RESPONSE

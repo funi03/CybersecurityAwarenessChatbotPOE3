@@ -79,7 +79,7 @@ namespace Cybersecurity_Awareness_Chatbot_Part2
                     "! Ask me anything about cybersecurity.");
             }
         }
-            private void btnSend_Click(object sender, RoutedEventArgs e)
+        private void btnSend_Click(object sender, RoutedEventArgs e)
         {
             string userInput = txtUserInput.Text.Trim();
 
@@ -112,18 +112,18 @@ namespace Cybersecurity_Awareness_Chatbot_Part2
             string feeling = sentiment.detect_sentiment(userInput);
 
             // SHOW SENTIMENT
-            if (feeling != "")
+            if (feeling != "neutral")
             {
                 string sentimentResponse = sentiment.sentiment_response(feeling);
-                txtChat.AppendText("SecureBot: " + sentimentResponse + "\n\n");
+
+                txtChat.AppendText( "SecureBot: " + sentimentResponse +"\n\n");
             }
 
             // Get chatbot response
             string response = bot.GetResponse(userInput, username);
 
-            txtChat.AppendText("SecureBot: " + response + "\n\n");
+            txtChat.AppendText( "SecureBot: " +  response +  "\n\n");
         }
-
         // DISPLAY CHAT METHOD
         private void error_method(string name, string message)
         {
