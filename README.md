@@ -2,7 +2,6 @@
 
 ## Overview
 
-SecureBot is a Cybersecurity Awareness Chatbot developed using **C# WPF (.NET Framework 4.7.2)**.
 The chatbot was designed to help users learn about cybersecurity topics in an interactive and user-friendly way.
 
 The application includes:
