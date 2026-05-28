@@ -17,11 +17,11 @@ using System.Windows.Shapes;
 using System.Xml.Linq;
 
 namespace Cybersecurity_Awareness_Chatbot_Part2
-{
-   
+{//  start namespace
+
     public partial class MainWindow : Window
-    {
-       
+    {//  start class
+
 
         // variables
         string username = string.Empty;
@@ -193,5 +193,5 @@ namespace Cybersecurity_Awareness_Chatbot_Part2
             txtChat.ScrollToEnd();
         }
 
-    }
-}
+    }// end class
+}// end namespace
