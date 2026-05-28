@@ -66,17 +66,41 @@ namespace Cybersecurity_Awareness_Chatbot_Part2
 
         private void submit_name(object sender, RoutedEventArgs e)
         {
+            // GET USERNAME
             username = user.submit_name(usernames_input);
 
+            // VALID USERNAME
             if (username != "")
             {
+                // CHECK IF USER EXISTS
+                bool oldUser = user.user_exists(username);
+
+                // SAVE USER
+                user.save_user(username);
+
+                // HIDE USERNAME GRID
                 username_grid.Visibility = Visibility.Hidden;
 
+                // SHOW CHAT GRID
                 chat_grid.Visibility = Visibility.Visible;
 
-                error_method("ChatBot",
-                    "Welcome " + username +
-                    "! Ask me anything about cybersecurity.");
+                // WELCOME MESSAGE
+                if (oldUser)
+                {
+                    txtChat.AppendText(
+                        "SecureBot: Welcome back " + username + "! Great to see you again.\n\n");
+                }
+                else
+                {
+                    txtChat.AppendText(
+                        "SecureBot: Nice to meet you, " +username +"! Ask me anything about cybersecurity.\n\n");
+                }
+            }
+            else
+            {
+                MessageBox.Show(
+                    "Please enter a valid username."
+                );
             }
         }
         private void btnSend_Click(object sender, RoutedEventArgs e)
