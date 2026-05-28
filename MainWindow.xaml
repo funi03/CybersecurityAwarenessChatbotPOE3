@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:Cybersecurity_Awareness_Chatbot_Part2"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800"
-        Background="Navy">
+        Background="#101728">
+
 
     <Grid>
         <!-- start parent grid-->
@@ -28,7 +29,7 @@
                 Foreground="White"
                 HorizontalAlignment="Center"
                 Margin="0,250,0,0"/>
-                
+
 
             <!-- button to continue-->
             <Button 
@@ -150,7 +151,7 @@
           Grid.Row="1"
           Margin="0,10,0,10"
           FontSize="14"
-          Background="Navy"
+          Background="#101728"
           Foreground="White"
           BorderBrush="Cyan"
           BorderThickness="2"
@@ -178,9 +179,10 @@
              Margin="0,10,0,10"
              Content="Send"
              FontWeight="Bold"
-             Background="Cyan"
+            Background="#00E5FF"
+            Foreground="Black"
              Click="btnSend_Click"/>
-                
+
 
             </Grid>
         </Grid>
