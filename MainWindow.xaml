@@ -54,60 +54,63 @@
 
         </Grid>
         <!-- USERNAME GRID-->
+        <Grid x:Name="username_grid"
+      Background="#0B1020"
+      Visibility="Hidden">
 
-        <Grid x:Name="username_grid" Visibility="Hidden">
+            <StackPanel
+        VerticalAlignment="Center"
+        HorizontalAlignment="Center"
+        Width="350">
 
+                <!-- LOGO -->
+                <Image
+            Source="/Logo.jpeg"
+            Width="180"
+            Height="180"
+            Margin="0,0,0,20"/>
 
-            <!-- Logo -->
-            <Image 
-        Source="/Logo.jpeg" 
-        Height="200"
-        Width="300"
-        Margin="0,0,0,200"
-           />
-            <!-- Hint message-->
-            <TextBlock
-        Text="Enter username"
-        FontSize="20"
-        Foreground="White"
-        TextAlignment="Justify"
-         HorizontalAlignment="Center"
-        Margin="0,200,0,0"
-        FontFamily="Arial Rounded MT Bold"
-        />
+                <!-- TITLE -->
+                <TextBlock
+            Text="Enter Username"
+            FontSize="28"
+            FontWeight="Bold"
+            Foreground="White"
+            HorizontalAlignment="Center"
+            Margin="0,0,0,20"/>
 
-            <!-- Enter/Prompt username-->
-            <TextBox
-       Height="40"
-       Width="270"
-       TextAlignment="Center"
-       Margin="0,100,0,0"
-       FontFamily="Arial Rounded MT Bold"
-       x:Name="usernames_input"
-       />
+                <!-- USERNAME BOX -->
+                <TextBox
+            x:Name="usernames_input"
+            Height="40"
+            FontSize="16"
+            Padding="10"
+            Margin="0,0,0,10"
+            Background="#101728"
+            Foreground="White"
+            BorderBrush="#00E5FF"/>
 
-            <!-- error message-->
-            <TextBlock
-           Text="please enter username to start chatting..."
-           Height="20"
-           Width="270"
-          TextAlignment="Justify"
-           Margin="0,180,0,0"
-           Foreground="Red"
-           FontFamily="Arial Rounded MT Bold"
-             />
+                <!-- ERROR MESSAGE -->
+                <TextBlock
+            x:Name="txtError"
+            Text="Please enter username to start chatting..."
+            FontSize="13"
+            Foreground="Red"
+            HorizontalAlignment="Center"
+            Margin="0,0,0,20"/>
 
+                <!-- SUBMIT BUTTON -->
+                <Button
+            Content="Submit Username"
+            Height="45"
+            FontSize="16"
+            FontWeight="Bold"
+            Background="#00E5FF"
+            Foreground="Black"
+            BorderBrush="Transparent"
+            Click="submit_name"/>
 
-            <!-- button to submit name-->
-            <Button 
-               Height="40"
-               Width="270"
-               Margin="0,250,0,0"
-               Content="submit username"
-               Click="submit_name"
-                FontWeight="Bold"
-                Background="Cyan"
-                   />
+            </StackPanel>
 
         </Grid>
         <!--chat grid-->
