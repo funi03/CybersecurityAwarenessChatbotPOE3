@@ -138,8 +138,18 @@ This prevents crashes and improves user experience.
 This project was created for educational purposes as part of a Cybersecurity Awareness Chatbot assignment.
 
 ---
+
 # Youtube link
 https://youtube.com/shorts/olQCV1FxqpY?feature=share
+
+---
+
+#Commit Screenshot
+
+<img width="1365" height="524" alt="Screenshot 2026-05-28 233204" src="https://github.com/user-attachments/assets/72fbaac0-2b34-427f-92f0-c1db29b884b8" />
+<img width="1365" height="524" alt="Screenshot 2026-05-28 233204" src="https://github.com/user-attachments/assets/65bda2ab-c06b-47b3-bd97-ae9a43086c69" />
+
+---
 
 # Author
 
