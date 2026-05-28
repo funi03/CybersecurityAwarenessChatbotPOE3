@@ -3,12 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 
 namespace Cybersecurity_Awareness_Chatbot_Part2
-{
-    
-        public class sentiment_detect
-        {
-            // RANDOM OBJECT
-            Random random = new Random();
+{//  start namespace
+
+    public class sentiment_detect
+    {// start class
+     // RANDOM OBJECT
+        Random random = new Random();
 
             // SENTIMENT DETECTION
             public string detect_sentiment(string message)
