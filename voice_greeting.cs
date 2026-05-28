@@ -2,9 +2,9 @@
 using System.Media;
 
 namespace Cybersecurity_Awareness_Chatbot_Part2
-{
+{//  start namespace
     public class voice_greeting
-    {
+    {//  start class
         public void greet()
         {
             // with app.configure
@@ -16,6 +16,6 @@ namespace Cybersecurity_Awareness_Chatbot_Part2
             //and play the sound 
             greet.Play();
 
-        }
-    }
-}
+        }// end method
+    }// end class
+}// end namespace
