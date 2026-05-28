@@ -12,37 +12,47 @@
     <Grid>
         <!-- start parent grid-->
 
-        <Grid x:Name="home_grid" Visibility="Visible">
+        <Grid x:Name="home_grid"
+      Background="#0B1020"
+      Visibility="Visible">
 
-            <!-- Logo -->
-            <Image 
-                Source="/Logo.jpeg" 
-                Height="200"
-                Width="300"
-                Margin="0,0,0,200"
-                   />
-            <!-- welcome message-->
-            <TextBlock
-                Text="Welcome to Cybersecurity Awareness Chatbot"
-                FontSize="26"
-                FontWeight="Bold"
-                Foreground="White"
-                HorizontalAlignment="Center"
-                Margin="0,250,0,0"/>
+            <!-- CENTER CONTENT -->
+            <StackPanel
+        VerticalAlignment="Center"
+        HorizontalAlignment="Center">
 
+                <!-- LOGO -->
+                <Image 
+            Source="/Logo.jpeg"
+            Width="220"
+            Height="220"
+            Margin="0,0,0,20"/>
 
-            <!-- button to continue-->
-            <Button 
-                Background="DeepSkyBlue"
-                Height="70"
-                Margin="228,323,227,41"
-                Content="Start AI"
-                Click="start"
-                FontWeight="Bold"
-                />
+                <!-- WELCOME MESSAGE -->
+                <TextBlock
+            Text="Welcome to Cybersecurity Awareness Chatbot"
+            FontSize="28"
+            FontWeight="Bold"
+            Foreground="White"
+            HorizontalAlignment="Center"
+            TextAlignment="Center"
+            Margin="0,0,0,40"/>
+
+                <!-- START BUTTON -->
+                <Button
+            Content="Start AI"
+            Width="250"
+            Height="50"
+            FontSize="18"
+            FontWeight="Bold"
+            Background="#00E5FF"
+            Foreground="Black"
+            BorderBrush="Transparent"
+            Click="start"/>
+
+            </StackPanel>
 
         </Grid>
-
         <!-- USERNAME GRID-->
 
         <Grid x:Name="username_grid" Visibility="Hidden">
