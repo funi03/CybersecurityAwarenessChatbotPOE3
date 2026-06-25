@@ -589,9 +589,7 @@ namespace Cybersecurity_Awareness_Chatbot_Part2
             }
 
         // showinput
-        // ================================================
-        // CUSTOM INPUT DIALOG - ADD THIS METHOD
-        // ================================================
+
         private string ShowInputDialog(string title, string prompt, string defaultValue = "")
         {
             // Create a simple input dialog window
@@ -599,7 +597,7 @@ namespace Cybersecurity_Awareness_Chatbot_Part2
             {
                 Title = title,
                 Width = 450,
-                Height = 250,
+                Height = 280,
                 WindowStartupLocation = WindowStartupLocation.CenterOwner,
                 Background = new SolidColorBrush(Color.FromRgb(16, 23, 40)),
                 Foreground = System.Windows.Media.Brushes.White,
@@ -621,17 +619,20 @@ namespace Cybersecurity_Awareness_Chatbot_Part2
             };
             panel.Children.Add(promptText);
 
-            // Input box
+            // Input box with better visibility
             TextBox inputBox = new TextBox
             {
                 Text = defaultValue,
                 Height = 35,
                 FontSize = 14,
-                Background = new SolidColorBrush(Color.FromRgb(16, 23, 40)),
+                Background = new SolidColorBrush(Color.FromRgb(20, 30, 50)),
                 Foreground = System.Windows.Media.Brushes.White,
+                CaretBrush = System.Windows.Media.Brushes.Cyan,
                 BorderBrush = new SolidColorBrush(Color.FromRgb(0, 229, 255)),
                 BorderThickness = new Thickness(1),
-                Padding = new Thickness(10, 5, 10, 5)
+                Padding = new Thickness(10, 5, 10, 5),
+                SelectionBrush = new SolidColorBrush(Color.FromRgb(0, 229, 255)),
+                SelectionOpacity = 0.3
             };
             panel.Children.Add(inputBox);
 
@@ -686,8 +687,12 @@ namespace Cybersecurity_Awareness_Chatbot_Part2
                 }
             };
 
-            // Focus the input box
-            dialog.Loaded += (s, e) => inputBox.Focus();
+            // Focus the input box and select all text
+            dialog.Loaded += (s, e) =>
+            {
+                inputBox.Focus();
+                inputBox.SelectAll();
+            };
 
             // Show dialog and get result
             bool? result = dialog.ShowDialog();
@@ -698,7 +703,6 @@ namespace Cybersecurity_Awareness_Chatbot_Part2
             }
             return null;
         }
-
         private void SetReminderButton_Click(object sender, RoutedEventArgs e)
         {
             try
