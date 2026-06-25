@@ -24,9 +24,7 @@ namespace Cybersecurity_Awareness_Chatbot_Part2
 
             // ============ PUBLIC METHODS ============
 
-            /// <summary>
-            /// Loads all quiz questions (either from file or default set)
-            /// </summary>
+            
             public List<Question_in_quiz> LoadAllQuestions()
             {
                 if (File.Exists(saveFilePath))
@@ -53,17 +51,13 @@ namespace Cybersecurity_Awareness_Chatbot_Part2
                 }
             }
 
-            /// <summary>
-            /// Populates the provided questions list with predefined cybersecurity questions
-            /// </summary>
+            
             public void autoLoadQuiz(ref List<Question_in_quiz> questions)
             {
                 questions = GetDefaultQuestions();
             }
 
-            /// <summary>
-            /// Gets a random set of questions for the quiz
-            /// </summary>
+          
             public List<Question_in_quiz> GetRandomQuestions(int count = 10)
             {
                 var allQuestions = LoadAllQuestions();
@@ -74,9 +68,7 @@ namespace Cybersecurity_Awareness_Chatbot_Part2
                 return shuffled.Take(count).ToList();
             }
 
-            /// <summary>
-            /// Gets questions by category
-            /// </summary>
+            
             public List<Question_in_quiz> GetQuestionsByCategory(string category)
             {
                 return LoadAllQuestions()
@@ -84,9 +76,7 @@ namespace Cybersecurity_Awareness_Chatbot_Part2
                     .ToList();
             }
 
-            /// <summary>
-            /// Gets questions by difficulty
-            /// </summary>
+           
             public List<Question_in_quiz> GetQuestionsByDifficulty(int difficulty)
             {
                 return LoadAllQuestions()
@@ -94,9 +84,7 @@ namespace Cybersecurity_Awareness_Chatbot_Part2
                     .ToList();
             }
 
-            /// <summary>
-            /// Gets questions by category and difficulty
-            /// </summary>
+           
             public List<Question_in_quiz> GetQuestionsByCategoryAndDifficulty(string category, int difficulty)
             {
                 return LoadAllQuestions()
@@ -105,9 +93,7 @@ namespace Cybersecurity_Awareness_Chatbot_Part2
                     .ToList();
             }
 
-            /// <summary>
-            /// Saves questions to file
-            /// </summary>
+           
             public void SaveQuestions(List<Question_in_quiz> questions)
             {
                 try
@@ -133,17 +119,13 @@ namespace Cybersecurity_Awareness_Chatbot_Part2
                 }
             }
 
-            /// <summary>
-            /// Gets the total number of questions
-            /// </summary>
+          
             public int GetQuestionCount()
             {
                 return LoadAllQuestions().Count;
             }
 
-            /// <summary>
-            /// Adds a new question to the collection
-            /// </summary>
+            
             public void AddQuestion(Question_in_quiz question)
             {
                 var allQuestions = LoadAllQuestions();
@@ -151,9 +133,8 @@ namespace Cybersecurity_Awareness_Chatbot_Part2
                 SaveQuestions(allQuestions);
             }
 
-            /// <summary>
-            /// Gets questions by search term
-            /// </summary>
+            
+            
             public List<Question_in_quiz> SearchQuestions(string searchTerm)
             {
                 return LoadAllQuestions()
@@ -163,9 +144,8 @@ namespace Cybersecurity_Awareness_Chatbot_Part2
                     .ToList();
             }
 
-            /// <summary>
-            /// Gets statistics about the question bank
-            /// </summary>
+          
+  
             public Dictionary<string, int> GetCategoryStatistics()
             {
                 var stats = new Dictionary<string, int>();
@@ -182,9 +162,7 @@ namespace Cybersecurity_Awareness_Chatbot_Part2
                 return stats;
             }
 
-            /// <summary>
-            /// Gets difficulty statistics
-            /// </summary>
+         
             public Dictionary<int, int> GetDifficultyStatistics()
             {
                 var stats = new Dictionary<int, int>();
@@ -203,16 +181,13 @@ namespace Cybersecurity_Awareness_Chatbot_Part2
 
             // ============ PRIVATE METHODS ============
 
-            /// <summary>
-            /// Returns the default set of cybersecurity questions (20+ questions)
-            /// </summary>
             private List<Question_in_quiz> GetDefaultQuestions()
             {
                 return new List<Question_in_quiz>
             {
-                // ==========================================
+           
                 // PASSWORD SAFETY QUESTIONS (5 questions)
-                // ==========================================
+              
                 new Question_in_quiz
                 {
                     Text = "What is password safety?",
@@ -259,9 +234,9 @@ namespace Cybersecurity_Awareness_Chatbot_Part2
                     Difficulty = 2
                 },
 
-                // ==========================================
+                
                 // PHISHING QUESTIONS (4 questions)
-                // ==========================================
+                
                 new Question_in_quiz
                 {
                     Text = "What is phishing?",
@@ -299,9 +274,9 @@ namespace Cybersecurity_Awareness_Chatbot_Part2
                     Difficulty = 2
                 },
 
-                // ==========================================
+                
                 // PRIVACY QUESTIONS (3 questions)
-                // ==========================================
+                
                 new Question_in_quiz
                 {
                     Text = "What is identity theft?",
@@ -330,9 +305,9 @@ namespace Cybersecurity_Awareness_Chatbot_Part2
                     Difficulty = 3
                 },
 
-                // ==========================================
+                
                 // BROWSING SAFETY QUESTIONS (3 questions)
-                // ==========================================
+               
                 new Question_in_quiz
                 {
                     Text = "What is safe browsing?",
@@ -361,9 +336,9 @@ namespace Cybersecurity_Awareness_Chatbot_Part2
                     Difficulty = 2
                 },
 
-                // ==========================================
+              
                 // MALWARE QUESTIONS (3 questions)
-                // ==========================================
+            
                 new Question_in_quiz
                 {
                     Text = "What is ransomware?",
@@ -392,9 +367,9 @@ namespace Cybersecurity_Awareness_Chatbot_Part2
                     Difficulty = 3
                 },
 
-                // ==========================================
+              
                 // NETWORK SECURITY QUESTIONS (3 questions)
-                // ==========================================
+                
                 new Question_in_quiz
                 {
                     Text = "What is a firewall?",
@@ -423,9 +398,9 @@ namespace Cybersecurity_Awareness_Chatbot_Part2
                     Difficulty = 2
                 },
 
-                // ==========================================
+                
                 // GENERAL SECURITY QUESTIONS (4 questions)
-                // ==========================================
+               
                 new Question_in_quiz
                 {
                     Text = "What is data backup?",
@@ -465,9 +440,7 @@ namespace Cybersecurity_Awareness_Chatbot_Part2
             };
             }
 
-            /// <summary>
-            /// Escapes a string for CSV format
-            /// </summary>
+           
             private string EscapeCsv(string value)
             {
                 if (string.IsNullOrEmpty(value))
