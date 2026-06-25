@@ -194,10 +194,7 @@ namespace Cybersecurity_Awareness_Chatbot_Part2
                 username_grid.Visibility = Visibility.Hidden;
                 chat_grid.Visibility = Visibility.Visible;
 
-                // Update user display
-                UserDisplay.Text = $" Welcome, {username}!";
-
-              
+               
                 // LOAD TASKS FOR USER - ADDED HERE
             
                 // Load tasks for the logged-in user
@@ -219,11 +216,11 @@ namespace Cybersecurity_Awareness_Chatbot_Part2
                 {
                     AddChatMessage($"Hello, {username}! I'm SecureBot, your cybersecurity awareness assistant.");
                     AddChatMessage("I can help you with:\n" +
-                                  "•  Password safety tips\n" +
-                                  "•  Phishing awareness\n" +
-                                  "•  Privacy protection\n" +
-                                  "•  Task management\n" +
-                                  "•  Cybersecurity quizzes\n\n" +
+                                  "Password safety tips\n" +
+                                  "Phishing awareness\n" +
+                                  "Privacy protection\n" +
+                                  "Task management\n" +
+                                  "Cybersecurity quizzes\n\n" +
                                   "Ask me anything about cybersecurity!");
                 }
 

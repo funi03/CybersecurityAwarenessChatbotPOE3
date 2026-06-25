@@ -129,7 +129,7 @@
                            Foreground="#00E5FF"/>
                         <TextBlock Text="Cybersecurity Awareness Chatbot"
                            FontSize="14" Foreground="White"/>
-                        <TextBlock x:Name="UserDisplay"
+                        <TextBlock
                            Text="Stay Safe • Stay Secure • Stay Smart"
                            FontSize="12" Foreground="#888888"/>
                     </StackPanel>
