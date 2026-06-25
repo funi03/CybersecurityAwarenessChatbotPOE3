@@ -162,7 +162,7 @@ https://youtube.com/shorts/olQCV1FxqpY?feature=share
 
 ### Purpose
 
-In recent years, South Africa has seen a significant rise in cyberattacks targeting individuals, businesses, and government institutions (Pieterse, 2021). These attacks often include phishing scams, malware, and social engineering, leaving many people vulnerable to financial loss, identity theft, and psychological harm.
+In recent years, South Africa has seen a significant rise in cyberattacks targeting individuals, businesses, and government institutions . These attacks often include phishing scams, malware, and social engineering, leaving many people vulnerable to financial loss, identity theft, and psychological harm.
 
 This chatbot serves as a **"Cybersecurity Awareness Assistant"** that:
 - Simulates real-life cybersecurity scenarios
@@ -173,7 +173,7 @@ This chatbot serves as a **"Cybersecurity Awareness Assistant"** that:
 
 ### Module Context
 
-This project was developed as part of the **PROG6221 Programming 2A** module at **The Independent Institute of Education (IIE)** .
+This project was developed as part of the **PROG6221 Programming 2A** .
 
 ---
 
@@ -323,13 +323,13 @@ xml
 <PackageReference Include="System.Data.SqlClient" Version="4.8.5" />
 <PackageReference Include="Microsoft.VisualBasic" Version="10.3.0" />
 
-##Commit Sreenshots
+###Commit Sreenshots
 
 <img width="996" height="586" alt="Screenshot 2026-06-25 223406" src="https://github.com/user-attachments/assets/4322e1f3-492a-4406-9c52-6264d147f1a0" />
 
 <img width="995" height="610" alt="Screenshot 2026-06-25 223433" src="https://github.com/user-attachments/assets/559269b2-e266-4ef9-94f6-2927d5387007" />
 
-##Youtube video
+###Youtube video
 
 https://youtu.be/rr7FdaJOIto?si=Ddn2WvcWCnD4Pudr
 
