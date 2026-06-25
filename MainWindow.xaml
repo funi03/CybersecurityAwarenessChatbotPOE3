@@ -90,9 +90,7 @@
 
         <!-- CHAT GRID -->
 
-        <!-- ============================================ -->
-        <!-- CHAT GRID (BUTTONS ON TOP, SEND AT BOTTOM) -->
-        <!-- ============================================ -->
+       
         <Grid x:Name="chat_grid" Visibility="Hidden">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
@@ -150,7 +148,7 @@
                         Click="ClearChatButton_Click"/>
 
                         <!-- Tasks Button -->
-                        <Button Content="📋 Tasks"
+                        <Button Content=" Tasks"
                         Height="35" Padding="12,0"
                         Margin="0,0,5,0"
                         Background="#2A2A40" Foreground="#00E5FF"
@@ -161,7 +159,7 @@
                         Click="TasksButton_Click"/>
 
                         <!-- Quiz Button -->
-                        <Button Content="🎯 Quiz"
+                        <Button Content=" Quiz"
                         Height="35" Padding="12,0"
                         Margin="0,0,5,0"
                         Background="#2A2A40" Foreground="#00E5FF"
@@ -172,7 +170,7 @@
                         Click="QuizButton_Click"/>
 
                         <!-- Log Button -->
-                        <Button Content="📝 Log"
+                        <Button Content=" Log"
                         Height="35" Padding="12,0"
                         Margin="0,0,5,0"
                         Background="#2A2A40" Foreground="#00E5FF"
@@ -183,7 +181,7 @@
                         Click="LogButton_Click"/>
 
                         <!-- Exit Button -->
-                        <Button Content="❌ Exit"
+                        <Button Content=" Exit"
                         Height="35" Padding="12,0"
                         Background="#FF4444" Foreground="White"
                         BorderBrush="DarkRed" BorderThickness="1"
@@ -237,7 +235,7 @@
                 <Button x:Name="btnSend"
                 Grid.Column="1"
                 Height="35" Width="80"
-                Content="📤 Send"
+                Content="Send"
                 FontWeight="Bold"
                 FontSize="14"
                 Background="#00E5FF"
@@ -248,9 +246,7 @@
         </Grid>
         
         
-        <!-- ============================================ -->
-        <!-- TASKS GRID (UPDATED WITH CONSISTENT COLORS) -->
-        <!-- ============================================ -->
+        <!-- TASKS GRID-->
         <Grid x:Name="tasks_grid" Visibility="Hidden">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
@@ -265,7 +261,7 @@
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Text="📋 Cybersecurity Tasks" 
+                    <TextBlock Text=" Cybersecurity Tasks" 
                                FontSize="24" FontWeight="Bold" 
                                Foreground="#00E5FF"/>
                     <Button Grid.Column="1" Content="↻ Refresh"
@@ -316,7 +312,7 @@
                                             <!-- Title -->
                                             <TextBlock Text="{Binding Title}" 
                                                        FontWeight="SemiBold" 
-                                                       Foreground="{Binding PriorityColor}"
+                                                       Foreground="#AAAAAA"
                                                        FontSize="15"/>
 
                                             <!-- Description -->
@@ -374,7 +370,7 @@
                    FontWeight="SemiBold"
                    Margin="0,0,0,3"/>
                             <TextBox x:Name="TaskTitleInput" 
-                 Height="35" 
+                 Height="40" 
                  Margin="0,0,0,15" 
                  Padding="10"
                  Background="#101728" 
