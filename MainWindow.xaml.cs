@@ -54,8 +54,11 @@ namespace Cybersecurity_Awareness_Chatbot_Part2
             // Counter for interests
             private int counting = 0;
 
-            // ============ CONSTRUCTOR ============
-            public MainWindow()
+        // Add this with the other fields
+        private bool _hasShownNoTaskMessage = false;
+
+        // ============ CONSTRUCTOR ============
+        public MainWindow()
             {
                 InitializeComponent();
                 InitializeComponents();
@@ -900,34 +903,60 @@ namespace Cybersecurity_Awareness_Chatbot_Part2
             try
             {
                 taskItems.Clear();
+
                 var tasks = taskManager.GetAllTasks(username);
+
+                if (tasks == null || tasks.Count == 0)
+                {
+                    // Add placeholder message
+                    taskItems.Add(new TaskDisplayItem
+                    {
+                        Id = -1,
+                        Title = "📭 No tasks found",
+                        Description = "Click 'Add Task' to create your first task!",
+                        DueDateDisplay = "",
+                        StatusIcon = "📭",
+                        PriorityIcon = "",
+                        PriorityText = "",
+                        PriorityColor = new SolidColorBrush(Color.FromRgb(136, 136, 136)),
+                        BorderBackground = new SolidColorBrush(Color.FromRgb(30, 30, 50))
+                    });
+
+                    // Show message only once
+                    if (!_hasShownNoTaskMessage)
+                    {
+                        MessageBox.Show("No tasks found.\n\nClick 'Add Task' to create your first task!",
+                            "Information", MessageBoxButton.OK, MessageBoxImage.Information);
+                        _hasShownNoTaskMessage = true;
+                    }
+                    return;
+                }
 
                 foreach (var task in tasks)
                 {
-                    // Determine priority color
                     Brush priorityColor;
                     string priorityText;
 
                     switch (task.Priority)
                     {
                         case CyberTask.PriorityLevel.Low:
-                            priorityColor = new SolidColorBrush(Color.FromRgb(0, 255, 100));  // Green
+                            priorityColor = new SolidColorBrush(Color.FromRgb(0, 255, 100));
                             priorityText = "🟢 Low Priority";
                             break;
                         case CyberTask.PriorityLevel.Medium:
-                            priorityColor = new SolidColorBrush(Color.FromRgb(255, 255, 0));  // Yellow
+                            priorityColor = new SolidColorBrush(Color.FromRgb(255, 255, 0));
                             priorityText = "🟡 Medium Priority";
                             break;
                         case CyberTask.PriorityLevel.High:
-                            priorityColor = new SolidColorBrush(Color.FromRgb(255, 165, 0));  // Orange
+                            priorityColor = new SolidColorBrush(Color.FromRgb(255, 165, 0));
                             priorityText = "🟠 High Priority";
                             break;
                         case CyberTask.PriorityLevel.Critical:
-                            priorityColor = new SolidColorBrush(Color.FromRgb(255, 0, 0));    // Red
+                            priorityColor = new SolidColorBrush(Color.FromRgb(255, 0, 0));
                             priorityText = "🔴 Critical Priority";
                             break;
                         default:
-                            priorityColor = new SolidColorBrush(Color.FromRgb(255, 255, 0));  // Yellow
+                            priorityColor = new SolidColorBrush(Color.FromRgb(255, 255, 0));
                             priorityText = "🟡 Medium Priority";
                             break;
                     }
@@ -951,6 +980,8 @@ namespace Cybersecurity_Awareness_Chatbot_Part2
             catch (Exception ex)
             {
                 logger.LogError($"Error refreshing tasks: {ex.Message}", ex.StackTrace);
+                MessageBox.Show($"Error loading tasks:\n\n{ex.Message}",
+                    "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
         private string GetPriorityIcon(CyberTask.PriorityLevel priority)
