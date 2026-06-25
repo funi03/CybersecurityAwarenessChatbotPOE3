@@ -667,45 +667,68 @@ namespace Cybersecurity_Awareness_Chatbot_Part2
                 }
             }
 
-            
-            // REFRESH TASK LIST - ADDED HERE
-            
-            private void RefreshTaskList()
+
+        // REFRESH TASK LIST - ADDED HERE
+
+        private void RefreshTaskList()
+        {
+            try
             {
-                try
+                taskItems.Clear();
+                var tasks = taskManager.GetAllTasks(username);
+
+                foreach (var task in tasks)
                 {
-                    // Clear existing items
-                    taskItems.Clear();
+                    // Determine priority color
+                    Brush priorityColor;
+                    string priorityText;
 
-                    
-                    // GET ALL TASKS FROM DATABASE - ADDED HERE
-                   
-                    var tasks = taskManager.GetAllTasks(username);
-
-                    // Add tasks to display
-                    foreach (var task in tasks)
+                    switch (task.Priority)
                     {
-                        taskItems.Add(new TaskDisplayItem
-                        {
-                            Id = task.Id,
-                            Title = task.Title,
-                            Description = task.Description,
-                            DueDateDisplay = task.DueDate.ToShortDateString(),
-                            StatusIcon = task.IsCompleted ? "✅" : "⏳",
-                            PriorityIcon = GetPriorityIcon(task.Priority),
-                            BorderBackground = task.IsCompleted ?
-                                new SolidColorBrush(Color.FromRgb(40, 60, 40)) :
-                                new SolidColorBrush(Color.FromRgb(40, 40, 60))
-                        });
+                        case CyberTask.PriorityLevel.Low:
+                            priorityColor = new SolidColorBrush(Color.FromRgb(0, 255, 100));  // Green
+                            priorityText = "🟢 Low Priority";
+                            break;
+                        case CyberTask.PriorityLevel.Medium:
+                            priorityColor = new SolidColorBrush(Color.FromRgb(255, 255, 0));  // Yellow
+                            priorityText = "🟡 Medium Priority";
+                            break;
+                        case CyberTask.PriorityLevel.High:
+                            priorityColor = new SolidColorBrush(Color.FromRgb(255, 165, 0));  // Orange
+                            priorityText = "🟠 High Priority";
+                            break;
+                        case CyberTask.PriorityLevel.Critical:
+                            priorityColor = new SolidColorBrush(Color.FromRgb(255, 0, 0));    // Red
+                            priorityText = "🔴 Critical Priority";
+                            break;
+                        default:
+                            priorityColor = new SolidColorBrush(Color.FromRgb(255, 255, 0));  // Yellow
+                            priorityText = "🟡 Medium Priority";
+                            break;
                     }
-                }
-                catch (Exception ex)
-                {
-                    logger.LogError($"Error refreshing tasks: {ex.Message}", ex.StackTrace);
+
+                    taskItems.Add(new TaskDisplayItem
+                    {
+                        Id = task.Id,
+                        Title = task.Title,
+                        Description = task.Description,
+                        DueDateDisplay = $"📅 {task.DueDate.ToShortDateString()}",
+                        StatusIcon = task.IsCompleted ? "✅" : "⏳",
+                        PriorityIcon = task.GetPriorityIcon(),
+                        PriorityText = priorityText,
+                        PriorityColor = priorityColor,
+                        BorderBackground = task.IsCompleted ?
+                            new SolidColorBrush(Color.FromRgb(40, 60, 40)) :
+                            new SolidColorBrush(Color.FromRgb(40, 40, 60))
+                    });
                 }
             }
-
-            private string GetPriorityIcon(CyberTask.PriorityLevel priority)
+            catch (Exception ex)
+            {
+                logger.LogError($"Error refreshing tasks: {ex.Message}", ex.StackTrace);
+            }
+        }
+        private string GetPriorityIcon(CyberTask.PriorityLevel priority)
             {
                 switch (priority)
                 {
@@ -940,14 +963,16 @@ namespace Cybersecurity_Awareness_Chatbot_Part2
 
         public class TaskDisplayItem
         {
-            public int Id { get; set; }
-            public string Title { get; set; }
-            public string Description { get; set; }
-            public string DueDateDisplay { get; set; }
-            public string StatusIcon { get; set; }
-            public string PriorityIcon { get; set; }
-            public Brush BorderBackground { get; set; }
-        }
+        public int Id { get; set; }
+        public string Title { get; set; }
+        public string Description { get; set; }
+        public string DueDateDisplay { get; set; }
+        public string StatusIcon { get; set; }
+        public string PriorityIcon { get; set; }
+        public string PriorityText { get; set; }
+        public Brush PriorityColor { get; set; }
+        public Brush BorderBackground { get; set; }
+    }
 
         public class LogDisplayItem
         {
