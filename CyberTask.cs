@@ -250,15 +250,15 @@ namespace Cybersecurity_Awareness_Chatbot_Part2
                 int daysUntilDue = GetDaysUntilDue();
 
                 if (daysUntilDue < 0)
-                    return "🔴 Overdue";
+                    return " Overdue";
                 else if (daysUntilDue <= 2)
-                    return "🔴 Urgent";
+                    return " Urgent";
                 else if (daysUntilDue <= 5)
-                    return "🟠 Soon";
+                    return "Soon";
                 else if (daysUntilDue <= 14)
-                    return "🟡 Moderate";
+                    return "Moderate";
                 else
-                    return "🟢 Not Urgent";
+                    return "Not Urgent";
             }
 
             
