@@ -21,7 +21,7 @@ namespace Cybersecurity_Awareness_Chatbot_Part2
                 // TRY BOTH CONNECTION STRINGS
                 // ================================================
                 // Try LocalDB first
-                connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=chatbot_task;Integrated Security=True;";
+                connectionString = @"Data Source=(localdb)\task_cyber;Initial Catalog=chatbot_task;Integrated Security=True;";
 
                 // If that fails, try SQL Express
                 // connectionString = @"Data Source=.\SQLEXPRESS;Initial Catalog=chatbot_task;Integrated Security=True;";
@@ -66,8 +66,7 @@ namespace Cybersecurity_Awareness_Chatbot_Part2
                         tasks_description VARCHAR(255),
                         tasks_status VARCHAR(50) DEFAULT 'pending',
                         tasks_duedate VARCHAR(50),
-                        username VARCHAR(100) DEFAULT 'default_user',
-                        created_date DATETIME DEFAULT GETDATE()
+                       
                     );
                 END";
 
@@ -96,9 +95,9 @@ namespace Cybersecurity_Awareness_Chatbot_Part2
                 {
                     string query = @"
                     INSERT INTO tasks 
-                    (tasks_name, tasks_description, tasks_status, tasks_duedate, username, created_date)
+                    (tasks_name, tasks_description, tasks_status, tasks_duedate )
                     VALUES 
-                    (@tasks_name, @tasks_description, @tasks_status, @tasks_duedate, @username, @created_date)";
+                    (@tasks_name, @tasks_description, @tasks_status, @tasks_duedate)";
 
                     using (var conn = GetConnection())
                     {
