@@ -99,10 +99,10 @@ namespace Cybersecurity_Awareness_Chatbot_Part2
             {
                 switch (Difficulty)
                 {
-                    case 1: return "🟢 Easy";
-                    case 2: return "🟡 Medium";
-                    case 3: return "🔴 Hard";
-                    default: return "🟡 Medium";
+                    case 1: return " Easy";
+                    case 2: return " Medium";
+                    case 3: return " Hard";
+                    default: return " Medium";
                 }
             }
 
