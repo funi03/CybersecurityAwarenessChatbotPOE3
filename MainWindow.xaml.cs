@@ -945,8 +945,13 @@ namespace Cybersecurity_Awareness_Chatbot_Part2
                 }
             }
 
-            // ============ EXIT ============
-            private void ExitButton_Click(object sender, RoutedEventArgs e)
+        private void BackToChatFromLog_Click(object sender, RoutedEventArgs e)
+        {
+            BackToChat();
+        }
+
+        // ============ EXIT ============
+        private void ExitButton_Click(object sender, RoutedEventArgs e)
             {
                 logger.AddLog("Application closed");
                 Close();
