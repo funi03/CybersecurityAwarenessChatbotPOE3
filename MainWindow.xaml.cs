@@ -195,7 +195,7 @@ namespace Cybersecurity_Awareness_Chatbot_Part2
                 chat_grid.Visibility = Visibility.Visible;
 
                 // Update user display
-                UserDisplay.Text = $"👤 Welcome, {username}!";
+                UserDisplay.Text = $" Welcome, {username}!";
 
                 // ================================================
                 // LOAD TASKS FOR USER - ADDED HERE
@@ -220,11 +220,11 @@ namespace Cybersecurity_Awareness_Chatbot_Part2
                 {
                     AddChatMessage($"Hello, {username}! I'm SecureBot, your cybersecurity awareness assistant.");
                     AddChatMessage("I can help you with:\n" +
-                                  "• 🔐 Password safety tips\n" +
-                                  "• 🎣 Phishing awareness\n" +
-                                  "• 🔒 Privacy protection\n" +
-                                  "• 📋 Task management\n" +
-                                  "• 🎯 Cybersecurity quizzes\n\n" +
+                                  "•  Password safety tips\n" +
+                                  "•  Phishing awareness\n" +
+                                  "•  Privacy protection\n" +
+                                  "•  Task management\n" +
+                                  "•  Cybersecurity quizzes\n\n" +
                                   "Ask me anything about cybersecurity!");
                 }
 
@@ -332,9 +332,9 @@ namespace Cybersecurity_Awareness_Chatbot_Part2
             {
                 string lowerInput = userInput.ToLower();
 
-                // ================================================
+               
                 // ADD TASK FROM CHAT - ADDED HERE
-                // ================================================
+                
                 if (lowerInput.StartsWith("add task") || lowerInput.StartsWith("addtask"))
                 {
                     string title = userInput.Substring(lowerInput.IndexOf("add task") + 8).Trim();
@@ -361,14 +361,14 @@ namespace Cybersecurity_Awareness_Chatbot_Part2
                     }
                     else
                     {
-                        AddChatMessage("SecureBot: ❌ Failed to add task. Please try again.");
+                        AddChatMessage("SecureBot:  Failed to add task. Please try again.");
                     }
                     return true;
                 }
 
-                // ================================================
+          
                 // COMPLETE TASK FROM CHAT - ADDED HERE
-                // ================================================
+                
                 if (lowerInput.StartsWith("complete task") || lowerInput.StartsWith("completetask"))
                 {
                     string title = userInput.Substring(lowerInput.IndexOf("complete task") + 13).Trim();
@@ -388,20 +388,20 @@ namespace Cybersecurity_Awareness_Chatbot_Part2
                         // COMPLETE THE TASK
                         if (taskManager.CompleteTask(task.Id))
                         {
-                            AddChatMessage($"SecureBot: ✅ Task '{task.Title}' marked as completed! Great job!");
+                            AddChatMessage($"SecureBot: Task '{task.Title}' marked as completed! Great job!");
                             RefreshTaskList();
                         }
                     }
                     else
                     {
-                        AddChatMessage($"SecureBot: ❌ Could not find a pending task with title containing '{title}'.");
+                        AddChatMessage($"SecureBot:  Could not find a pending task with title containing '{title}'.");
                     }
                     return true;
                 }
 
-                // ================================================
+                
                 // DELETE TASK FROM CHAT - ADDED HERE
-                // ================================================
+            
                 if (lowerInput.StartsWith("delete task") || lowerInput.StartsWith("deletetask"))
                 {
                     string title = userInput.Substring(lowerInput.IndexOf("delete task") + 11).Trim();
@@ -421,13 +421,13 @@ namespace Cybersecurity_Awareness_Chatbot_Part2
                         // DELETE THE TASK
                         if (taskManager.DeleteTask(task.Id))
                         {
-                            AddChatMessage($"SecureBot: 🗑️ Task '{task.Title}' deleted.");
+                            AddChatMessage($"SecureBot:  Task '{task.Title}' deleted.");
                             RefreshTaskList();
                         }
                     }
                     else
                     {
-                        AddChatMessage($"SecureBot: ❌ Could not find a task with title containing '{title}'.");
+                        AddChatMessage($"SecureBot:  Could not find a task with title containing '{title}'.");
                     }
                     return true;
                 }
@@ -527,9 +527,9 @@ namespace Cybersecurity_Awareness_Chatbot_Part2
                 txtUserInput.Focus();
             }
 
-            // ================================================
+            
             // TASKS BUTTONS - ALL TASK MANAGER METHODS HERE
-            // ================================================
+            
             private void TasksButton_Click(object sender, RoutedEventArgs e)
             {
                 ShowTasksPage();
@@ -561,9 +561,9 @@ namespace Cybersecurity_Awareness_Chatbot_Part2
                     Priority = GetPriorityFromCombo()
                 };
 
-                // ================================================
+                
                 // ADD TASK TO DATABASE - ADDED HERE
-                // ================================================
+                
                 if (taskManager.AddTask(task, username))
                 {
                     MessageBox.Show($"Task '{title}' added successfully!", "Success",
@@ -589,9 +589,9 @@ namespace Cybersecurity_Awareness_Chatbot_Part2
                     return;
                 }
 
-                // ================================================
+             
                 // GET TASKS AND SET REMINDER - ADDED HERE
-                // ================================================
+                
                 var tasks = taskManager.GetAllTasks(username);
                 var task = tasks.FirstOrDefault(t => t.Title.ToLower() == title.ToLower() && !t.IsCompleted);
 
@@ -635,9 +635,9 @@ namespace Cybersecurity_Awareness_Chatbot_Part2
                 var selected = TaskListBox.SelectedItem as TaskDisplayItem;
                 if (selected == null) return;
 
-                // ================================================
+                
                 // GET TASK BY ID - ADDED HERE
-                // ================================================
+                
                 var task = taskManager.GetTaskById(selected.Id);
                 if (task == null) return;
 
@@ -646,9 +646,9 @@ namespace Cybersecurity_Awareness_Chatbot_Part2
                     if (MessageBox.Show($"Delete task '{task.Title}'?", "Delete Task",
                         MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
                     {
-                        // ================================================
+                   
                         // DELETE TASK - ADDED HERE
-                        // ================================================
+                      
                         taskManager.DeleteTask(task.Id);
                         RefreshTaskList();
                     }
@@ -658,18 +658,18 @@ namespace Cybersecurity_Awareness_Chatbot_Part2
                     if (MessageBox.Show($"Mark '{task.Title}' as completed?", "Complete Task",
                         MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
                     {
-                        // ================================================
+                    
                         // COMPLETE TASK - ADDED HERE
-                        // ================================================
+                        
                         taskManager.CompleteTask(task.Id);
                         RefreshTaskList();
                     }
                 }
             }
 
-            // ================================================
+            
             // REFRESH TASK LIST - ADDED HERE
-            // ================================================
+            
             private void RefreshTaskList()
             {
                 try
@@ -677,9 +677,9 @@ namespace Cybersecurity_Awareness_Chatbot_Part2
                     // Clear existing items
                     taskItems.Clear();
 
-                    // ================================================
+                    
                     // GET ALL TASKS FROM DATABASE - ADDED HERE
-                    // ================================================
+                   
                     var tasks = taskManager.GetAllTasks(username);
 
                     // Add tasks to display
@@ -709,11 +709,11 @@ namespace Cybersecurity_Awareness_Chatbot_Part2
             {
                 switch (priority)
                 {
-                    case CyberTask.PriorityLevel.Low: return "🟢";
-                    case CyberTask.PriorityLevel.Medium: return "🟡";
-                    case CyberTask.PriorityLevel.High: return "🟠";
-                    case CyberTask.PriorityLevel.Critical: return "🔴";
-                    default: return "🟡";
+                    case CyberTask.PriorityLevel.Low: return "yellow";
+                    case CyberTask.PriorityLevel.Medium: return "orange";
+                    case CyberTask.PriorityLevel.High: return "red";
+                    case CyberTask.PriorityLevel.Critical: return "darkred";
+                    default: return "";
                 }
             }
 
@@ -806,13 +806,13 @@ namespace Cybersecurity_Awareness_Chatbot_Part2
                     quizScore += 10;
                     QuizScoreDisplay.Text = $"⭐ Score: {quizScore}";
                     selected.Background = new SolidColorBrush(Color.FromRgb(0, 128, 0));
-                    QuizFeedbackText.Text = $"✅ Correct! {question.Explanation}";
+                    QuizFeedbackText.Text = $" Correct! {question.Explanation}";
                     QuizFeedbackText.Foreground = new SolidColorBrush(Colors.LightGreen);
                 }
                 else
                 {
                     selected.Background = new SolidColorBrush(Color.FromRgb(128, 0, 0));
-                    QuizFeedbackText.Text = $"❌ Incorrect. {question.Explanation}";
+                    QuizFeedbackText.Text = $" Incorrect. {question.Explanation}";
                     QuizFeedbackText.Foreground = new SolidColorBrush(Colors.LightCoral);
 
                     foreach (var button in quizOptionButtons)
@@ -869,11 +869,11 @@ namespace Cybersecurity_Awareness_Chatbot_Part2
                 if (percentage >= 80)
                     feedback = "⭐ Excellent! You're a cybersecurity expert!";
                 else if (percentage >= 60)
-                    feedback = "👍 Good job! Keep learning to improve your cybersecurity knowledge!";
+                    feedback = " Good job! Keep learning to improve your cybersecurity knowledge!";
                 else
-                    feedback = "📚 Keep learning! Practice makes perfect!";
+                    feedback = " Keep learning! Practice makes perfect!";
 
-                MessageBox.Show($"🎉 Quiz Complete!\n\nScore: {quizScore} points\n{feedback}",
+                MessageBox.Show($" Quiz Complete!\n\nScore: {quizScore} points\n{feedback}",
                     "Quiz Complete", MessageBoxButton.OK, MessageBoxImage.Information);
 
                 logger.LogQuizCompleted(quizScore / 10, quizQuestions.Count);
