@@ -197,13 +197,12 @@ namespace Cybersecurity_Awareness_Chatbot_Part2
                 // Update user display
                 UserDisplay.Text = $" Welcome, {username}!";
 
-                // ================================================
+              
                 // LOAD TASKS FOR USER - ADDED HERE
-                // ================================================
+            
                 // Load tasks for the logged-in user
                 RefreshTaskList();
-                // ================================================
-
+                
                 // Recall interests
                 string recalledInterest = memory.recall_interest(username);
 
@@ -540,7 +539,20 @@ namespace Cybersecurity_Awareness_Chatbot_Part2
                 RefreshTaskList();
             }
 
-            private void AddTaskButton_Click(object sender, RoutedEventArgs e)
+        private void ClearChatButton_Click(object sender, RoutedEventArgs e)
+        {
+            var result = MessageBox.Show("Are you sure you want to clear all chat messages?",
+                "Clear Chat", MessageBoxButton.YesNo, MessageBoxImage.Question);
+
+            if (result == MessageBoxResult.Yes)
+            {
+                txtChat.Document.Blocks.Clear();
+                logger?.AddLog("Chat cleared by user");
+                AddChatMessage("🔄 Chat cleared. Start a new conversation!");
+            }
+        }
+
+        private void AddTaskButton_Click(object sender, RoutedEventArgs e)
             {
                 string title = TaskTitleInput.Text.Trim();
                 string description = TaskDescriptionInput.Text.Trim();
@@ -740,9 +752,11 @@ namespace Cybersecurity_Awareness_Chatbot_Part2
                 }
             }
 
-            // ================================================
+
+
+           
             // QUIZ FUNCTIONALITY
-            // ================================================
+            
             private void QuizButton_Click(object sender, RoutedEventArgs e)
             {
                 ShowQuizPage();
